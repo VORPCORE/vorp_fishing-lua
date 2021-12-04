@@ -1,4 +1,4 @@
-# vorp_Fishing [Lua]
+# vorp_fishing [Lua]
 🐟 Lua version of vorp_fishing based on the amazing work of the FRP_Framework team 🐟
 
 ## Requirements
