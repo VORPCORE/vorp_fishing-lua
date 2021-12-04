@@ -11,7 +11,6 @@
 
 
 ## How to install
-* [Download the lastest version of vorp Fishing](https://github.com/VORPCORE/vorp_fishing/releases)
 * Copy and paste ```vorp_fishing``` folder to ```resources/vorp_fishing```
 * Add ```ensure vorp_fishing``` to your ```server.cfg``` file
 * copy the images in the ```items``` folder to your ```vorp_inventory``` images folder
