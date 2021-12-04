@@ -19,5 +19,5 @@
 * Happy fishing!
 
 ## Credits and original source
-[FRP-Framework Fishing](https://github.com/Faroeste-Roleplay/frp-lua-rdr3/tree/main/resources/%5BFAROESTE%5D/%5BJOBS%5D/frp_fishing)
-[FRP-Framework Research](https://github.com/Faroeste-Roleplay/frp-lua-rdr3/tree/main/resources/%5BFAROESTE%5D/%5BSYSTEM%5D/research)
+* [FRP-Framework Fishing](https://github.com/Faroeste-Roleplay/frp-lua-rdr3/tree/main/resources/%5BFAROESTE%5D/%5BJOBS%5D/frp_fishing)
+* [FRP-Framework Research](https://github.com/Faroeste-Roleplay/frp-lua-rdr3/tree/main/resources/%5BFAROESTE%5D/%5BSYSTEM%5D/research)
