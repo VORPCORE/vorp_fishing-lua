@@ -308,10 +308,12 @@ Citizen.CreateThread(function()
                     if IsControlJustPressed(0, GetHashKey("INPUT_AIM")) then
                         if fishing then
                             fishing = false
+							local entity = FISHING_GET_FISH_HANDLE()
+						    Citizen.InvokeNative(0x9B0C7FA063E67629, PlayerPedId(), "", 0, 1)
                             FISHING_SET_TRANSITION_FLAG(64)
-                            SetEntityAsMissionEntity(entity, true, true)
-                            Citizen.Wait(3000)
-                            DeleteEntity(entity)
+						    SetEntityAsMissionEntity(entity, true, true)
+						    Citizen.Wait(3000)
+						    DeleteEntity(entity)
                         end
                     end
 
