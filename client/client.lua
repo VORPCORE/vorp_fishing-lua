@@ -293,7 +293,7 @@ Citizen.CreateThread(function()
                         if fishing then
                             FISHING_SET_TRANSITION_FLAG(32)
                             fishing = false
-                            staus = "keep"
+                            status = "keep"
                             local entity = FISHING_GET_FISH_HANDLE()
                             local fishModel = GetEntityModel(entity)
                             TriggerServerEvent("vorp_fishing:FishToInventory", fishModel)
