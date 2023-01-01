@@ -656,7 +656,7 @@ function prepareMyPrompt()
     PromptRegisterEnd(prompt)
     fishing_data.prompt_waiting_hook.reel_lure = prompt
 
-    -- Puxando Peixe
+    -- pulling fish
     fishing_data.prompt_hook.group = GetRandomIntInRange(0, 0xffffff)
     prompt = PromptRegisterBegin()
     PromptSetControlAction(prompt, 0xFBD7B3E6) -- SPACE
@@ -678,7 +678,7 @@ function prepareMyPrompt()
     PromptRegisterEnd(prompt)
     fishing_data.prompt_hook.cancel = prompt
 
-    -- Peixe Pego
+     --caught fish
     fishing_data.prompt_finish.group = GetRandomIntInRange(0, 0xffffff)
     prompt = PromptRegisterBegin()
     PromptSetControlAction(prompt, GetHashKey("INPUT_ATTACK")) -- MOUSE LEFT CLICK
