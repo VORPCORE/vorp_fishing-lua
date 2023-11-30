@@ -527,7 +527,8 @@ function GetNearbyFishs(coords, radius)
     if size > 0 then
         for index = 0, size - 1 do
             local entity = GetIndexedItemInItemset(index, itemSet)
-            if GetEntityPopulationType(entity) == 6 and not IsPedDeadOrDying(entity, 0) then
+            local populationType = GetEntityPopulationType(entity)
+            if (populationType == 6 or populationType == 8) and not IsPedDeadOrDying(entity, 0) then --population type 8 is for fishes that were created using CreatePed.
                 table.insert(r, entity)
             end
         end
