@@ -549,7 +549,7 @@ function FishModelToSomeSortOfWeightIndex(fishModel)
         return 2
     elseif fishModel == GetHashKey("A_C_FISHPERCH_01_SM")  then
         return 3
-    elseif fishModel == GetHashKey("A_C_FISHREDFINPICKEREL_01_SM") then
+    elseif fishModel == GetHashKey("A_C_FISHCHAINPICKEREL_01_SM") then
         return 4
     elseif fishModel == GetHashKey("A_C_FISHROCKBASS_01_SM")  then
         return 5
@@ -563,7 +563,7 @@ function FishModelToSomeSortOfWeightIndex(fishModel)
         return 9
     elseif fishModel == GetHashKey("A_C_FISHLARGEMOUTHBASS_01_MS") then
         return 10
-    elseif fishModel == GetHashKey("A_C_FISHPERCH_01_MS") then
+    elseif fishModel == GetHashKey("A_C_FISHREDFINPICKEREL_01_MS") then
         return 11
     elseif fishModel == GetHashKey("A_C_FISHRAINBOWTROUT_01_MS")  then
         return 12
