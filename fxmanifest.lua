@@ -8,20 +8,31 @@ repository 'https://github.com/VORPCORE/vorp_fishing-lua'
 
 
 shared_scripts {
-	"config.lua",
-	"locale.lua",
-	"languages/*.lua"
+	"config/config.lua",
+	"config/baits.lua",
+	"config/baitsPerFish.lua",
+	"config/fishData.lua",
+	"translation/translation.lua"
 }
+
 client_scripts {
 	'client/client_js.js',
-	'client/client.lua',
+	'client/client.lua'
 }
-server_script 'server/server.lua',
+
+server_script {
+	'server/server.lua'
+}
+
+dependencies {
+	'vorp_core',
+	'vorp_inventory'
+}
 
 exports {
-    'GET_TASK_FISHING_DATA',
-    'SET_TASK_FISHING_DATA',
-    'VERTICAL_PROBE'
+	'GET_TASK_FISHING_DATA',
+	'SET_TASK_FISHING_DATA',
+	'VERTICAL_PROBE'
 }
 
 --dont touch
