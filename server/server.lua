@@ -82,7 +82,7 @@ AddEventHandler("vorp_fishing:FishToInventory", function(fishModel)
     local fish_name = fishNames[fishModel]
 
     exports.vorp_inventory:addItem(_source, fish, 1)
-    TriggerClientEvent("vorp:TipBottom", _source, T.YourGot .. " " .. fish_name, 4000)
+    VORPcore.NotifyTip(_source, T.YourGot .. " " .. fish_name,4000)
 end)
 
 RegisterServerEvent('vorp_fishing:discord')
