@@ -113,7 +113,7 @@ AddEventHandler("vorp_fishing:FishToInventory", function(fishModel)
     local fish_texture = fishTextures[fishModel]
 
     exports.vorp_inventory:addItem(_source, fish, 1)
-    VORPcore.NotifyAvanced(_source,T.YourGot .. " " .. fish_name, "inventory_items", fish_texture, "COLOR_PURE_WHITE", 4000)
+    VORPcore.NotifyAvanced(_source, T.YourGot .. " " .. fish_name, "inventory_items", fish_texture, "COLOR_PURE_WHITE", 4000)
 end)
 
 RegisterServerEvent('vorp_fishing:discord')
@@ -151,4 +151,3 @@ AddEventHandler("vorp_fishing:discord", function(fishModel, fishWeight, status)
 
     VORPcore.AddWebhook(title, webhook, description, color, botname, footerlogo, avatar)
 end)
-

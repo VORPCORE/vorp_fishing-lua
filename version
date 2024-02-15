@@ -1,1 +1,12 @@
+<1.2>
+- Added server and client lua files inside folders
+- Adjusted system of translation for default methods of others vorp scripts
+- Declarations of all files and dependencies added
+- Using new exports of VORPcore and Inventory
+- Added NotifyAdvanced after capture fish
+- Added TextureFishing show in notify
+- Webhook replaced to use of VORPcore and added DiscordFooterLogo
+- Config.lua are more clean
+- Created data files in config folder, separated
 <1.1>
+- Initial Project
