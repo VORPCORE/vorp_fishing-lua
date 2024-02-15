@@ -123,7 +123,7 @@ AddEventHandler("vorp_fishing:discord", function(fishModel, fishWeight, status)
 
     local fish = fishEntity[fishModel]
     local fish_name = fishNames[fishModel]
-    local fish_weight = string.format("%.2f", (fishWeight * 54.25))
+    local fish_weight = string.format("%.2f%%", (fishWeight * 54.25))
     local webhook = Config.DiscordWebHook
     local botname = Config.DiscordBotName
     local avatar = Config.DiscordAvatar
