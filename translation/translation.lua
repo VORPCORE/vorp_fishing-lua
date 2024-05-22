@@ -125,5 +125,30 @@ Translation.Langs = {
     discord_fishThrow = "Der Fisch wurde freigelassen! 😭",
     discord_fieldFishName = "🦈 Fisch Name: ",
     discord_fieldFishWeight = "⚖ Gewicht: "
+  },
+  Czech = {
+    ReadyToFish = "Připraven k rybaření!",
+    PrepRod = "Připravit rybářský prut",
+    ThrowHook = "Nahazovat rybářský háček",
+    YourGot = "Získal jsi",
+    --------------------------------
+    Fishing = "Rybaření",
+    HookFish = "Zachytit",
+    ReelLure = "Navinout návnadu",
+    --------------------------------
+    MiniGame = "Chytit rybu!",
+    ReelIn = "Navinout",
+    Cancel = "Zrušit nahazování",
+    --------------------------------
+    FishName = "Název",
+    FishWeight = "Váha",
+    KeepFish = "Zachovat rybu",
+    ThrowFish = "Vyhodit rybu",
+    --------------------------------
+    discord_fishCaught = "chytil rybu!",
+    discord_fishKept = "Ryba byla zachována! 😁",
+    discord_fishThrow = "Ryba byla vyhozena! 😭",
+    discord_fieldFishName = "🦈 Název ryby: ",
+    discord_fieldFishWeight = "⚖ Váha: "
   }
 }
