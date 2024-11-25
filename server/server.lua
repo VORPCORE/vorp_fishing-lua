@@ -92,28 +92,44 @@ local fishTextures = {
     [`A_C_FISHSMALLMOUTHBASS_01_MS`] = FishData.A_C_FISHSMALLMOUTHBASS_01_MS[2],
 }
 
-Citizen.CreateThread(function()
-    Citizen.Wait(2000)
+local playersFishing = {}
+
+CreateThread(function()
     for index, item in pairs(Baits) do
         exports.vorp_inventory:registerUsableItem(item, function(data)
-            local UsableBait = item
-
-            exports.vorp_inventory:subItem(data.source, UsableBait, 1)
-            TriggerClientEvent("vorp_fishing:UseBait", data.source, UsableBait)
+            playersFishing[data.source] = true
             exports.vorp_inventory:closeInventory(data.source)
+            exports.vorp_inventory:subItem(data.source, item, 1)
+            TriggerClientEvent("vorp_fishing:UseBait", data.source, item)
         end)
     end
 end)
 
-RegisterServerEvent('vorp_fishing:FishToInventory')
-AddEventHandler("vorp_fishing:FishToInventory", function(fishModel)
+RegisterServerEvent('vorp_fishing:stopFishing', function()
+    if playersFishing[source] then
+        playersFishing[source] = nil
+    end
+end)
+
+RegisterServerEvent('vorp_fishing:FishToInventory', function(fishModel)
     local _source = source
+    if not playersFishing[_source] then return print("Player is not fishing and tried to give item to inventory",
+            GetPlayerName(_source)) end
+
     local fish = fishEntity[fishModel]
     local fish_name = fishNames[fishModel]
     local fish_texture = fishTextures[fishModel]
 
     exports.vorp_inventory:addItem(_source, fish, 1)
-    VORPcore.NotifyAvanced(_source, T.YourGot .. " " .. fish_name, "inventory_items", fish_texture, "COLOR_PURE_WHITE", 4000)
+    VORPcore.NotifyAvanced(_source, T.YourGot .. " " .. fish_name, "inventory_items", fish_texture, "COLOR_PURE_WHITE",
+        4000)
+end)
+
+AddEventHandler("playerDropped", function()
+    local _source = source
+    if playersFishing[_source] then
+        playersFishing[_source] = nil
+    end
 end)
 
 RegisterServerEvent('vorp_fishing:discord')
@@ -147,7 +163,9 @@ AddEventHandler("vorp_fishing:discord", function(fishModel, fishWeight, status)
     end
 
     local title = CharName .. " " .. T.discord_fishCaught
-    local description = _description .. "\n" .. T.discord_fieldFishName .. ": " .. fish_name .. "\n" .. T.discord_fieldFishWeight .. ": " .. fish_weight .. "Kg"
+    local description = _description ..
+        "\n" ..
+        T.discord_fieldFishName .. ": " .. fish_name .. "\n" .. T.discord_fieldFishWeight .. ": " .. fish_weight .. "Kg"
 
     VORPcore.AddWebhook(title, webhook, description, color, botname, footerlogo, avatar)
 end)
