@@ -113,8 +113,10 @@ end)
 
 RegisterServerEvent('vorp_fishing:FishToInventory', function(fishModel)
     local _source = source
-    if not playersFishing[_source] then return print("Player is not fishing and tried to give item to inventory",
-            GetPlayerName(_source)) end
+    if not playersFishing[_source] then
+        return print("Player is not fishing and tried to give item to inventory",
+        GetPlayerName(_source))
+    end
 
     local fish = fishEntity[fishModel]
     local fish_name = fishNames[fishModel]
@@ -140,7 +142,7 @@ AddEventHandler("vorp_fishing:discord", function(fishModel, fishWeight, status)
     local fish = fishEntity[fishModel]
     local fish_name = fishNames[fishModel]
     local fish_weight = string.format("%.2f%%", (fishWeight * 54.25))
-    local webhook = Config.DiscordWebHook
+    local webhook = "" -- link here for webhook
     local botname = Config.DiscordBotName
     local avatar = Config.DiscordAvatar
     local footerlogo = Config.DiscordFooterLogo
