@@ -111,12 +111,14 @@ RegisterServerEvent('vorp_fishing:stopFishing', function()
     end
 end)
 
-RegisterServerEvent('vorp_fishing:FishToInventory', function(fishModel)
+RegisterServerEvent('vorp_fishing:FishToInventory', function(netid)
     local _source = source
     if not playersFishing[_source] then
         return print("Player is not fishing and tried to give item to inventory", GetPlayerName(_source))
     end
 
+    local entity = NetworkGetEntityFromNetworkId(netid)
+    local fishModel = GetEntityModel(entity)
     local fish = fishEntity[fishModel]
     local fish_name = fishNames[fishModel]
     local fish_texture = fishTextures[fishModel]

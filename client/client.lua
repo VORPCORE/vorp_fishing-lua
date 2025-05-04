@@ -297,15 +297,23 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
                         fishing = false
                         status = "keep"
                         local entity = FISHING_GET_FISH_HANDLE()
-                        local fishModel = GetEntityModel(entity)
-                        TriggerServerEvent("vorp_fishing:FishToInventory", fishModel)
-                        if Config.DiscordIntegration == true then
-                            TriggerServerEvent("vorp_fishing:discord", fishModel, fishing_data.fish.weight, status)
+                        -- check if its networked
+                        local isNetworked = NetworkGetEntityIsNetworked(entity)
+                        if isNetworked then
+                            local netid = NetworkGetNetworkIdFromEntity(entity)
+                            TriggerServerEvent("vorp_fishing:FishToInventory", netid)
+                            if Config.DiscordIntegration then
+                                -- need to be moved to server side
+                                local fishModel = GetEntityModel(entity)
+                                TriggerServerEvent("vorp_fishing:discord", fishModel, fishing_data.fish.weight, status)
+                            end
+                            SetEntityAsMissionEntity(entity, true, true)
+                            Citizen.Wait(3000)
+                            DeleteEntity(entity)
+                            Citizen.InvokeNative(0x9B0C7FA063E67629, PlayerPedId(), "", 0, 1)
+                        else
+                            print("Fish Entity is not networked")
                         end
-                        SetEntityAsMissionEntity(entity, true, true)
-                        Citizen.Wait(3000)
-                        DeleteEntity(entity)
-                        Citizen.InvokeNative(0x9B0C7FA063E67629, PlayerPedId(), "", 0, 1)
                     end
                 end
 
