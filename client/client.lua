@@ -301,7 +301,8 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
                         local isNetworked = NetworkGetEntityIsNetworked(entity)
                         if isNetworked then
                             local netid = NetworkGetNetworkIdFromEntity(entity)
-                            TriggerServerEvent("vorp_fishing:FishToInventory", netid)
+                            local model = GetEntityModel(entity)
+                            TriggerServerEvent("vorp_fishing:FishToInventory", netid, model)
                             if Config.DiscordIntegration then
                                 -- need to be moved to server side
                                 local fishModel = GetEntityModel(entity)

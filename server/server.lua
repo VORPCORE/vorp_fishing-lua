@@ -52,14 +52,15 @@ RegisterServerEvent('vorp_fishing:stopFishing', function()
     end
 end)
 
-RegisterServerEvent('vorp_fishing:FishToInventory', function(netid)
+RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel)
     local _source = source
     if not playersFishing[_source] then
         return print("Player is not fishing and tried to give item to inventory", GetPlayerName(_source))
     end
 
     local entity = NetworkGetEntityFromNetworkId(netid)
-    local fishModel = GetEntityModel(entity)
+    if not DoesEntityExist(entity) then return print("Entity does not exist", netid) end
+    --local fishModel = GetEntityModel(entity) -- doesnt work on server side for animals
     local fish = fishEntity[fishModel]
     if not fish then return print("Fish model not found in table fishEntity", fishModel) end
     local fish_name = fish.name
