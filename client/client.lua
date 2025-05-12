@@ -302,12 +302,8 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
                         if isNetworked then
                             local netid = NetworkGetNetworkIdFromEntity(entity)
                             local model = GetEntityModel(entity)
-                            TriggerServerEvent("vorp_fishing:FishToInventory", netid, model)
-                            if Config.DiscordIntegration then
-                                -- need to be moved to server side
-                                local fishModel = GetEntityModel(entity)
-                                TriggerServerEvent("vorp_fishing:discord", fishModel, fishing_data.fish.weight, status)
-                            end
+                            TriggerServerEvent("vorp_fishing:FishToInventory", netid, model, fishing_data.fish.weight, status)
+
                             SetEntityAsMissionEntity(entity, true, true)
                             Citizen.Wait(3000)
                             DeleteEntity(entity)

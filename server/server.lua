@@ -52,7 +52,7 @@ RegisterServerEvent('vorp_fishing:stopFishing', function()
     end
 end)
 
-RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel)
+RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel, fishWeight, status)
     local _source = source
     if not playersFishing[_source] then
         return print("Player is not fishing and tried to give item to inventory", GetPlayerName(_source))
@@ -68,7 +68,17 @@ RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel)
     local fish_texture = fish.texture
     if not fish_texture then return print("Fish texture not found in table fishTextures", fishModel) end
 
-    exports.vorp_inventory:addItem(_source, fish_name, 1)
+    local canCarry = exports.vorp_inventory:canCarryItem(_source, fish.entity, 1)
+    if not canCarry then
+        VORPcore.NotifyObjective(_source, "can't carry more items", 4000)
+        return
+    end
+
+    if Config.DiscordIntegration then
+        TriggerEvent('vorp_fishing:discord', source, fishModel, fishWeight, status)
+    end
+
+    exports.vorp_inventory:addItem(_source, fish.entity, 1)
     VORPcore.NotifyAvanced(_source, T.YourGot .. " " .. fish_name, "inventory_items", fish_texture, "COLOR_PURE_WHITE", 4000)
 end)
 
@@ -79,7 +89,7 @@ AddEventHandler("playerDropped", function()
     end
 end)
 
-RegisterServerEvent('vorp_fishing:discord', function(fishModel, fishWeight, status)
+AddEventHandler('vorp_fishing:discord', function(source, fishModel, fishWeight, status)
     local _source = source
     local Character = VORPcore.getUser(_source).getUsedCharacter
 
