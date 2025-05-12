@@ -60,7 +60,7 @@ RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel)
 
     local entity = NetworkGetEntityFromNetworkId(netid)
     if not DoesEntityExist(entity) then return print("Entity does not exist", netid) end
-    --local fishModel = GetEntityModel(entity) -- doesnt work on server side for animals
+
     local fish = fishEntity[fishModel]
     if not fish then return print("Fish model not found in table fishEntity", fishModel) end
     local fish_name = fish.name
@@ -68,7 +68,7 @@ RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel)
     local fish_texture = fish.texture
     if not fish_texture then return print("Fish texture not found in table fishTextures", fishModel) end
 
-    exports.vorp_inventory:addItem(_source, fish, 1)
+    exports.vorp_inventory:addItem(_source, fish_name, 1)
     VORPcore.NotifyAvanced(_source, T.YourGot .. " " .. fish_name, "inventory_items", fish_texture, "COLOR_PURE_WHITE", 4000)
 end)
 
