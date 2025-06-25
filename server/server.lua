@@ -75,7 +75,7 @@ RegisterServerEvent('vorp_fishing:FishToInventory', function(netid, fishModel, f
     end
 
     if Config.DiscordIntegration then
-        TriggerEvent('vorp_fishing:discord', fishModel, fishWeight, status, _source)
+        TriggerEvent('vorp_fishing:discord', fishModel, fishWeight, status)
     end
 
     exports.vorp_inventory:addItem(_source, fish.entity, 1)
@@ -90,13 +90,9 @@ AddEventHandler("playerDropped", function()
 end)
 
 RegisterNetEvent("vorp_fishing:discord")
-AddEventHandler('vorp_fishing:discord', function(fishModel, fishWeight, status, source)
-    local _source = src
+AddEventHandler('vorp_fishing:discord', function(fishModel, fishWeight, status)
+    local _source = source
 
-    if type(_source) ~= "number" and source ~= nil then
-       _source = source
-    end
- 
     local Character = VORPcore.getUser(_source).getUsedCharacter
     local fish = fishEntity[fishModel]
     if not fish then return print("Fish model not found in table fishEntity", fishModel) end
