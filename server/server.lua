@@ -91,7 +91,11 @@ end)
 
 RegisterNetEvent("vorp_fishing:discord")
 AddEventHandler('vorp_fishing:discord', function(fishModel, fishWeight, status, source)
-    local _source = src or source
+    local _source = src 
+    if not src then
+       _source = source
+    end
+        
     local Character = VORPcore.getUser(_source).getUsedCharacter
 
     local fish = fishEntity[fishModel]
