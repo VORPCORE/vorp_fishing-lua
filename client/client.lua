@@ -333,7 +333,7 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
                         Citizen.InvokeNative(0x9B0C7FA063E67629, PlayerPedId(), "", 0, 1)
                         FISHING_SET_TRANSITION_FLAG(64)
                         if Config.DiscordIntegration == true then
-                            TriggerServerEvent("vorp_fishing:discord", fishModel, fishing_data.fish.weight, status)
+                            TriggerServerEvent("vorp_fishing:discord", fishModel, fishing_data.fish.weight, status, GetPlayerServerId(PlayerId()))
                         end
                         SetEntityAsMissionEntity(entity, true, true)
                         Citizen.Wait(3000)
