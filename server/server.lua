@@ -90,13 +90,9 @@ AddEventHandler("playerDropped", function()
 end)
 
 RegisterNetEvent("vorp_fishing:discord")
-AddEventHandler('vorp_fishing:discord', function(fishModel, fishWeight, status, source)
+AddEventHandler('vorp_fishing:discord', function(fishModel, fishWeight, status, src)
     local _source = src
 
-    if type(_source) ~= "number" and source ~= nil then
-       _source = source
-    end
- 
     local Character = VORPcore.getUser(_source).getUsedCharacter
     local fish = fishEntity[fishModel]
     if not fish then return print("Fish model not found in table fishEntity", fishModel) end
