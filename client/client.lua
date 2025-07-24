@@ -145,7 +145,7 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
                 if fishHandle then
                     local probabilidadePuxar = math.random()
                     if probabilidadePuxar > 0.9 or probabilidadePuxar < 0.2 then -- soltar linha
-                        if FISHING_GET_F_(5) == 1 then
+                       -- if FISHING_GET_F_(5) == 1 then
                             Citizen.InvokeNative(0xF0FBF193F1F5C0EA, fishHandle)
 
                             SetPedConfigFlag(fishHandle, 17, true)
@@ -161,7 +161,7 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
                             fishForce = 0.6
 
                             FISHING_SET_TRANSITION_FLAG(4)
-                        end
+                      --  end
                     end
                 end
             end
