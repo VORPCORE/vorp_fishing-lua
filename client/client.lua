@@ -69,7 +69,7 @@ RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
         for _, veh in pairs(vehicleList) do
             local vehModel = GetEntityModel(veh)
             for _, boatModel in pairs(Config.boats) do
-                if vehModel == GetHashKey(boatModel) then
+                if vehModel == joaat(boatModel) then
                     local boatCoords = GetEntityCoords(veh)
                     if #(boatCoords - playerCoords) < 20.0 then
                         if IsPedOnSpecificVehicle(playerPed, veh) then
