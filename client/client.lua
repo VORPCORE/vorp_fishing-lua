@@ -7,6 +7,7 @@ local fishForce = 0.6
 local nextAttTime = 0
 local horizontalMove = 0
 local status = nil
+local Core = exports.vorp_core:GetCore()
 
 local T = Translation.Langs[Config.Lang]
 
@@ -59,6 +60,26 @@ end)
 
 RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
     if fishing then return end
+
+    local playerPed = PlayerPedId()
+    if IsPedOnVehicle(playerPed) then
+        local playerPed = PlayerPedId()
+        local playerCoords = GetEntityCoords(playerPed)
+        local vehicleList = GetGamePool('CVehicle')
+        for _, veh in pairs(vehicleList) do
+            local vehModel = GetEntityModel(veh)
+            for _, boatModel in pairs(Config.boats) do
+                if vehModel == GetHashKey(boatModel) then
+                    local boatCoords = GetEntityCoords(veh)
+                    if #(boatCoords - playerCoords) < 20.0 then
+                        if IsPedOnSpecificVehicle(playerPed, veh) then
+                            Core.NotifyRightTip(T.standNearSide, 4000)
+                        end
+                    end
+                end
+            end
+        end
+    end
 
     Citizen.InvokeNative(0x1096603B519C905F, "MMFSH")
     prepareMyPrompt()
