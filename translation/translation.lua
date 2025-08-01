@@ -6,6 +6,8 @@ Translation.Langs = {
     PrepRod = "Prepare Fishing Rod",
     ThrowHook = "Cast Fishing Rod",
     YourGot = "You got a",
+    standNearSide = "Stand near the side of the boat when fishing",
+
     --------------------------------
     Fishing = "Fishing",
     HookFish = "Hook",
@@ -56,6 +58,7 @@ Translation.Langs = {
     PrepRod = "Prepare a Vara de Pesca",
     ThrowHook = "Lance a Vara de Pesca",
     YourGot = "Você pegou um",
+    standNearSide = "Fique perto do lado do barco ao pescar",
     --------------------------------
     Fishing = "Pescaria",
     HookFish = "Fisgar",
@@ -81,6 +84,7 @@ Translation.Langs = {
     PrepRod = "Prepara la Caña de Pescar",
     ThrowHook = "Lanza el Anzuelo",
     YourGot = "You got a",
+    standNearSide = "Ponte cerca del lado del barco al pescar",
     --------------------------------
     Fishing = "Pescando",
     HookFish = "Anzuelo",
@@ -106,6 +110,7 @@ Translation.Langs = {
     PrepRod = "Angelrute vorbereiten",
     ThrowHook = "Angelrute auswerfen",
     YourGot = "You got a",
+    standNearSide = "Stehe nahe am Rand des Bootes beim Angeln",
     --------------------------------
     Fishing = "Angeln",
     HookFish = "Haken",

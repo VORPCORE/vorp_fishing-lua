@@ -7,6 +7,7 @@ local fishForce = 0.6
 local nextAttTime = 0
 local horizontalMove = 0
 local status = nil
+local Core = exports.vorp_core:GetCore()
 
 local T = Translation.Langs[Config.Lang]
 
@@ -60,6 +61,11 @@ end)
 RegisterNetEvent("vorp_fishing:UseBait", function(UsableBait)
     if fishing then return end
 
+    local playerPed = PlayerPedId()
+    if Citizen.InvokeNative(0xDC88D06719070C39,playerPed) and not IsPedSwimming(playerPed) then
+        Core.NotifyRightTip(T.Stand, 4000)
+    end
+  
     Citizen.InvokeNative(0x1096603B519C905F, "MMFSH")
     prepareMyPrompt()
     fishing = true
